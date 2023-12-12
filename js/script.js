@@ -80,7 +80,7 @@ $(document).ready(function () {
 
     $('#add-to-cart').click(() => {
         const title = $('.container__informations .container__informations__description p:nth-child(2)').text();
-        const price = parseFloat($('.container__informations__cart-details p').text().replace('$', ''));
+        const price = parseFloat($('.container__informations__cart-details p').text());
         const selectedColor = $('.container__informations__color-change-info button.selected').attr('id');
         const selectedSize = $('.container__informations__size-info button.selected').attr('id');
 
