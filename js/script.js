@@ -70,13 +70,15 @@ $(document).ready(function () {
         addSelectedClass(storedSize, '.container__informations__size-info button');
     }
 
+    if (!$('.js-variant').length){
+        return;
+    }
     $('.js-variant').on('click', function(){
         var $el = $(this);
-
+    
         if (!$el.length){
             return;
         }
-
         var variantHandle = $el.attr('id')
         if (variantHandle == 'navy' || variantHandle == 'red' || variantHandle == 'green' ){
             colorChange(variantHandle)
