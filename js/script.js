@@ -70,23 +70,31 @@ $(document).ready(function () {
         addSelectedClass(storedSize, '.container__informations__size-info button');
     }
 
-    $('#navy').click(() => colorChange('navy'));
-    $('#red').click(() => colorChange('red'));
-    $('#green').click(() => colorChange('green'));
+    $('.js-variant').on('click', function(){
+        var $el = $(this);
 
-    $('#small').click(() => pocketChange('small'));
-    $('#medium').click(() => pocketChange('medium'));
-    $('#large').click(() => pocketChange('large'));
+        if (!$el.length){
+            return;
+        }
+
+        var variantHandle = $el.attr('id')
+        if (variantHandle == 'navy' || variantHandle == 'red' || variantHandle == 'green' ){
+            colorChange(variantHandle)
+        }else{
+            pocketChange(variantHandle)
+        }
+    });
 
     $('#add-to-cart').click(() => {
         const title = $('.container__informations .container__informations__description p:nth-child(2)').text();
         const price = parseFloat($('.container__informations__cart-details p').text());
         const selectedColor = $('.container__informations__color-change-info button.selected').attr('id');
         const selectedSize = $('.container__informations__size-info button.selected').attr('id');
+        
         if (!title || !price || !selectedColor || !selectedSize){
             return;
-        }else {
-            addToCart(title, price, selectedColor, selectedSize);
         }
+
+        addToCart(title, price, selectedColor, selectedSize);
     });
 });
